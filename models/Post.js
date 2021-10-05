@@ -19,9 +19,15 @@ Post.init(
         key: 'id',
       },
     },
+    title: {
+      type: DataTypes.STRING,
+      required: true,
+      defaultValue: "Lorem Ipsum"
+    },
     content: {
       type: DataTypes.TEXT,
-      required: true
+      required: true,
+      defaultValue: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.`
     },
     date_created: {
       type: DataTypes.DATE,
