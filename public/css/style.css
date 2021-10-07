@@ -17,8 +17,14 @@ header, .project:not(:last-child) {
   text-decoration: underline;
 }
 
-.dollar-amount {
-  color: #056605;
-  font-weight: bold;
-  margin-left: -5px;
+.table {
+  display: table;
+  margin: 0 auto;
 }
+
+ul#horizontal-list {
+  list-style: none;
+}
+  ul#horizontal-list li {
+    display: inline;
+  }
