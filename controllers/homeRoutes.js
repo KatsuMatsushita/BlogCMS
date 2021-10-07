@@ -35,11 +35,17 @@ router.get('/dashboard', withAuth, async (req, res) => {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] }
     });
-
     const user = userData.get({ plain: true });
-    console.log(user);
+    // console.log(user);
+    const postData = await Post.findAll({
+      where: {user_id: req.session.user_id}
+    });
+
+    const posts = postData.map((postCol) => postCol.get({ plain: true }));
+    console.log(posts);
     res.render('dashboard', {
       ...user,
+      posts,
       logged_in: true
     });
   } catch (err) {
