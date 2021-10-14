@@ -1,3 +1,12 @@
+// get the modal
+var modal = document.getElementById("modal_window");
+
+// assigns to the button that opens the modal
+var openBtn = document.getElementById("open_modal");
+
+// assigns to the div that closes the modal
+var closeBtn = document.getElementById("close_modal");
+
 const newPostHandler = async (event) => {
   event.preventDefault();
 

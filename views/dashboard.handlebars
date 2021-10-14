@@ -42,8 +42,23 @@
   {{/if}}
 </div>
 
-<div>
-  <button class="btn btn-sm submit">Create Post</button>
+<!-- submission modal copied from https://www.the-art-of-web.com/javascript/feedback-modal-window/ -->
+<p>
+  <button class="btn btn-sm" id="open_modal">Create Post</button>
+</p>
+
+<div id="modal_wrapper">
+  <div id="modal_window">
+    <!-- this is a boilerplate for creating the close button for a modal window -->
+    <div style="text-align: right;"><a id="close_modal" href="#">close <b>X</b></a></div>
+    <form id="modal_post" accept-charset="UTF-8">
+      <p><label for="title">Title</label></p><br>
+      <input type="text" size="48" name="title" id="ptitle" autofocus required><br><br>
+      <p><label for="content">Post</label></p><br>
+      <input type="text" size="48" name="content" id="pcontent"><br>
+      <input type="button" id="postSubmit" value="Post!">
+    </form>
+  </div>
 </div>
 
 <script src="./js/dashboard.js"></script>
