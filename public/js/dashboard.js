@@ -1,11 +1,32 @@
 // get the modal
-var modal = document.getElementById("modal_window");
+var modalWindow = document.getElementById("modal_window");
+var modalWrapper = document.getElementById("modal_wrapper");
 
 // assigns to the button that opens the modal
 var openBtn = document.getElementById("open_modal");
 
 // assigns to the div that closes the modal
 var closeBtn = document.getElementById("close_modal");
+
+/* submission modal copied from https://www.the-art-of-web.com/javascript/feedback-modal-window/
+ Original JavaScript code by Chirp Internet: chirpinternet.eu
+ Please acknowledge use of this code by including this header.
+*/
+const openModal = (e) => {
+  modalWrapper.className = "overlay";
+    var overflow = modalWindow.offsetHeight - document.documentElement.clientHeight;
+    if(overflow > 0) {
+      modalWindow.style.maxHeight = (parseInt(window.getComputedStyle(modalWindow).height) - overflow) + "px";
+    }
+    modalWindow.style.marginTop = (-modalWindow.offsetHeight)/2 + "px";
+    modalWindow.style.marginLeft = (-modalWindow.offsetWidth)/2 + "px";
+    e.preventDefault ? e.preventDefault() : e.returnValue = false;
+};
+
+var closeModal = (e) => {
+  modalWrapper.className = "";
+  e.preventDefault ? e.preventDefault() : e.returnValue = false;
+};
 
 const newPostHandler = async (event) => {
   event.preventDefault();
@@ -15,7 +36,7 @@ const newPostHandler = async (event) => {
   const description = document.querySelector('#project-desc').value.trim();
 
   if (name && needed_funding && description) {
-    const response = await fetch(`/api/projects`, {
+    const response = await fetch(`/api/posts/new`, {
       method: 'POST',
       body: JSON.stringify({ name, needed_funding, description }),
       headers: {
@@ -47,10 +68,13 @@ const delButtonHandler = async (event) => {
   }
 };
 
-document
+/* document
   .querySelector('.new-project-form')
   .addEventListener('submit', newFormHandler);
 
 document
   .querySelector('.project-list')
-  .addEventListener('click', delButtonHandler);
+  .addEventListener('click', delButtonHandler); */
+
+openBtn.addEventListener("click", openModal);
+closeBtn.addEventListener("click", closeModal);

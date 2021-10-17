@@ -51,12 +51,13 @@
   <div id="modal_window">
     <!-- this is a boilerplate for creating the close button for a modal window -->
     <div style="text-align: right;"><a id="close_modal" href="#">close <b>X</b></a></div>
-    <form id="modal_post" accept-charset="UTF-8">
+    <!-- the following line sets where the form data should be submitted to, and how it should be sent -->
+    <form id="modal_post" accept-charset="UTF-8" action="/api/posts/" method="post">
       <p><label for="title">Title</label></p><br>
       <input type="text" size="48" name="title" id="ptitle" autofocus required><br><br>
       <p><label for="content">Post</label></p><br>
       <input type="text" size="48" name="content" id="pcontent"><br>
-      <input type="button" id="postSubmit" value="Post!">
+      <input type="submit" id="postSubmit">
     </form>
   </div>
 </div>
