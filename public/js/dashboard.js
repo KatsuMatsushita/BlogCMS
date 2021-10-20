@@ -28,7 +28,7 @@ var closeModal = (e) => {
   e.preventDefault ? e.preventDefault() : e.returnValue = false;
 };
 
-const newPostHandler = async (event) => {
+/* const newPostHandler = async (event) => {
   event.preventDefault();
 
   const name = document.querySelector('#project-name').value.trim();
@@ -50,7 +50,7 @@ const newPostHandler = async (event) => {
       alert('Failed to create project');
     }
   }
-};
+}; */
 
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {

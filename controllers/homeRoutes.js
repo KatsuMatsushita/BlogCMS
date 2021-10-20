@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Post, User } = require('../models');
 const withAuth = require('../utils/auth');
+const Data = require("../utils/getData");
 
 router.get('/', async (req, res) => {
   try {
@@ -13,10 +14,10 @@ router.get('/', async (req, res) => {
         },
       ],
     });
-
+    
     // Serialize data so the template can read it
     const posts = postData.map((project) => project.get({ plain: true }));
-
+    console.log(posts);
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       posts, 
@@ -27,6 +28,15 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get("/posts/:postID", async (req, res) => {
+  try {
+    const postData = await Data.getPost(req.params.postID);
+    //const postData = await Post.findByPk(req.params.postID);
+    res.status(200).json(postData);
+    } catch (err) {
+        res.status(500).json(err);
+    };
+})
 
 // Use withAuth middleware to prevent access to route
 router.get('/dashboard', withAuth, async (req, res) => {
