@@ -30,8 +30,11 @@ router.get('/', async (req, res) => {
 
 router.get("/posts/:postID", async (req, res) => {
   try {
+    //const getPostData = await Post.findByPk(req.params.postID);
     const postData = await Data.getPost(req.params.postID);
     //const postData = await Post.findByPk(req.params.postID);
+    //console.log("This is from inside just the router.get" + process.env.JAWSDB_URL);
+    //console.log(postData);
     res.status(200).json(postData);
     } catch (err) {
         res.status(500).json(err);
